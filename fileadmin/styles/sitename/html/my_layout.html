@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="de">
+<head>
+  <meta charset="UTF-8">
+	<!--[if IE]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+
+  <title>typo3boilerplate - Standard Template</title>
+	
+	<meta name="viewport" content="width=device-width; initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	<link rel="shortcut icon" href="../images/favicon.ico">
+	<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+	
+	<!-- <link rel="apple-touch-icon-precomposed" href="styles/images/apple-touch-icon-precomposed.png"> -->
+	
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="robots" content="index,follow">
+  <meta name="generator" content="typo3boilerplate 1.0">
+	
+	<!-- Stylesheets loaded without @import so live.js work for development -->
+	<!--[if ! lte IE 6]><!-->
+  <link rel="stylesheet" href="../css/yaml/core/slim_base.css">
+  <link rel="stylesheet" href="../css/navigation/nav.css">
+  <link rel="stylesheet" href="../css/screen/basemod.css">
+  <link rel="stylesheet" href="../css/screen/content.css">
+  <link rel="stylesheet" href="../css/screen/fce.css">
+  <link rel="stylesheet" href="../css/screen/responsive.css">
+  <!--<![endif]-->
+	
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<link href="css/patches/patch_lte_ie8.css" rel="stylesheet" type="text/css" />
+	<![endif]-->
+  <!--[if lte IE 7]>
+  <link href="css/patches/patch_ie.css" rel="stylesheet" type="text/css" />
+  <![endif]-->
+  <!--[if lte IE 6]>
+  <link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1b.css" media="screen, projection">
+  <script typle="text/javascript">
+  document.write('<style type="text/css">img, .pngtrans { behavior: url(http://'+window.location.hostname+'fileadmin/styles/sitename/css/patches/hm_iepngfix/hm_iepngfix.htc) }</style>');
+  </script>
+  <![endif]-->
+  <!--[if IEMobile]>
+  <link href="css/patches/patch_mobile_ie.css" rel="stylesheet" type="text/css" />
+  <![endif]-->
+  
+  <script type="text/javascript" src="../js/lib/modernizr.js"></script>
+
+  <!-- in TYPO3 this is moved just before the closed body tag -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script type="text/javascript">!window.jQuery && document.write(unescape('%3Cscript type="text/javascript" src="../js/libs/jquery-1.6.2.min.js"%3E%3C/script%3E'))</script>
+	<script type="text/javascript" src="../js/my_plugins.js"></script>
+	<script type="text/javascript" src="../js/my_layout.js"></script>
+	
+	<!-- just for development -->
+  <script type="text/javascript" src="js/lib/live.js"></script>
+</head>
+<body class="my_layout">
+  <div class="page_margins">
+    <div class="page">
+      <div id="header" role="banner">
+        <ul id="skiplinks" role="navigation">
+          <li><a class="skip" href="#navigation">Skip to navigation (Press Enter).</a></li>
+          <li><a class="skip" href="#content">Skip to main content (Press Enter).</a></li>
+          <li><a class="skip" href="#contentinfo">Skip to footer (Press Enter).</a></li>
+        </ul>
+        <div id="logo">
+          <img src="images/logo.png" alt="Logo" />
+        </div>
+        <div id="nav" role="navigation">
+          <a id="navigation" name="navigation"></a>
+          <div class="hlist">
+            <ul>
+              <li class="first current"><a href="#">Button 1</a></li>
+              <li><a href="#">Button 2</a></li>
+              <li><a href="#">Button 3</a></li>
+              <li class="last"><a href="#">Button 4</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="teaser">
+        <p>p:outer - teaser</p>
+      </div>
+      <div id="main" role="main">
+        <a id="content" name="content"></a>
+        <p>p:outer - content</p>
+      </div>
+      <div id="footer" role="contentinfo">
+        <a id="contentinfo" name="contentinfo"></a>
+        <p>p:outer - footer</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

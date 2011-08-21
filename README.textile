@@ -1,0 +1,22 @@
+h1. TYPO3 boilerplate
+
+The TYPO3 boilerplate is inspired by the HTML5 boilerplate in combination with the CSS Framework "YAML":http://www.yaml.de/en/home.html and the idea of Responsive Web Design.
+
+It contains all standard files to create a new project.
+
+h2. How to use
+
+For more informations please visit "typo3boilerplate.com/howto/":http://typo3boilerplate.com/howto/
+
+h2. Thanks to
+
+* Paul Irish ("HTML5 boilerplate":http://html5boilerplate.com/)
+* Dirk Jesse ("YAML":http://www.yaml.de/en/home.html)
+* Andy Clarke ("Hardboiled Web Design":http://hardboiledwebdesign.com/)
+* Ethan Marcotte ("Article about Responsive Web Design":http://www.alistapart.com/articles/responsive-web-design/, "Responsive Web Design book":http://www.abookapart.com/products/responsive-web-design)
+
+h2. Versions
+
+* HTML5 boilerplate 2.0
+* YAML 3.3.1
+* jQuery 1.6.2
