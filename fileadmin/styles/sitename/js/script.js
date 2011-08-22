@@ -21,10 +21,10 @@ if (language = 'de' || !language) {
 }
 
 jQuery(document).ready(function($){
-	accessifyhtml5($);
+	$.accessifyhtml5();
 	
 	/* only if modernizr is not used */
-	$('html').removeClass('no-js');
+	$('html').removeClass('no-js').addClass('js');
 	
 	/* hide address bar in mobile browsers like safari on iPhone */
 	setTimeout(function() { window.scrollTo(0, 1) }, 100);
@@ -101,29 +101,4 @@ function getWindowWidth($) {
 		var windowWidth = $('body').width();
 	}
 	return windowWidth;
-}
-
-/**
- * Accessifyhtml5.js
- * Adds ARIA to new elements in browsers which don’t do it by themselves.
- *
- * originally by Eric Eggert
- * https://github.com/yatil/accessifyhtml5.js/blob/master/accessifyhtml5.js
- *
- **/
-function accessifyhtml5($){
-	var fixes = {
-		'header.site'   : { 'role':          'banner'        },
-		'footer.site'   : { 'role':          'contentinfo'   },
-		'article'       : { 'role':          'article'       },
-		'aside'         : { 'role':          'complementary' },
-		'nav'           : { 'role':          'navigation'    },
-		'output'        : { 'aria-live':     'polite'        },
-		'section'       : { 'role':          'region'        },
-		'[required]'    : { 'aria-required': 'true'          }
-	};
-
-	$.each(fixes, function(index, item) {
-		$(index).attr(item);
-	});
 }

@@ -8,7 +8,7 @@
 
   <title>typo3boilerplate - Standard Template</title>
 	
-	<meta name="viewport" content="width=device-width; initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 	
@@ -24,6 +24,7 @@
 	
 	<!-- Stylesheets loaded without @import so live.js work for development -->
 	<!--[if ! lte IE 6]><!-->
+	<link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/yaml/core/slim_base.css">
   <link rel="stylesheet" href="../css/navigation/nav.css">
   <link rel="stylesheet" href="../css/screen/basemod.css">
@@ -32,12 +33,13 @@
   <link rel="stylesheet" href="../css/screen/responsive.css">
   <!--<![endif]-->
 	
+	<!-- remove html5.js if using modernizr! -->
 	<!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<link href="css/patches/patch_lte_ie8.css" rel="stylesheet" type="text/css" />
+	<link href="../css/patches/patch_lte_ie8.css" rel="stylesheet" type="text/css">
 	<![endif]-->
   <!--[if lte IE 7]>
-  <link href="css/patches/patch_ie.css" rel="stylesheet" type="text/css" />
+  <link href="../css/patches/patch_ie.css" rel="stylesheet" type="text/css">
   <![endif]-->
   <!--[if lte IE 6]>
   <link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1b.css" media="screen, projection">
@@ -46,19 +48,19 @@
   </script>
   <![endif]-->
   <!--[if IEMobile]>
-  <link href="css/patches/patch_mobile_ie.css" rel="stylesheet" type="text/css" />
+  <link href="../css/patches/patch_mobile_ie.css" rel="stylesheet" type="text/css">
   <![endif]-->
   
-  <script type="text/javascript" src="../js/lib/modernizr.js"></script>
+  <script type="text/javascript" src="../js/libs/modernizr.js"></script>
 
   <!-- in TYPO3 this is moved just before the closed body tag -->
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script type="text/javascript">!window.jQuery && document.write(unescape('%3Cscript type="text/javascript" src="../js/libs/jquery-1.6.2.min.js"%3E%3C/script%3E'))</script>
-	<script type="text/javascript" src="../js/my_plugins.js"></script>
-	<script type="text/javascript" src="../js/my_layout.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script type="text/javascript">!window.jQuery && document.write(unescape('%3Cscript type="text/javascript" src="../js/libs/jquery-1.7.min.js"%3E%3C/script%3E'))</script>
+	<script type="text/javascript" src="../js/plugins.js"></script>
+	<script type="text/javascript" src="../js/script.js"></script>
 	
 	<!-- just for development -->
-  <script type="text/javascript" src="js/lib/live.js"></script>
+  <script type="text/javascript" src="../js/libs/live.js"></script>
 </head>
 <body class="my_layout">
   <div class="page_margins">

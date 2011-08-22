@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>IE PNG Transparency Fix</title>
+<link href="stylesheet.css" type="text/css" rel="stylesheet" />
+<!--[if lte IE 6]>
+  <style type="text/css">
+    img, .pngtrans { behavior:url(hm_iepngfix.htc) }
+  </style>
+<![endif]-->
+</head>
+<body>
+	<h1>IE PNG Transparency Fix</h1>
+	<p>More combined Internet Explorer PNG Transparency Fix for pure images and CSS backgrounds.</p>
+	
+  <h2>Activate the PNG-Fix</h2>
+	<p>Add this code in your HTML Head.</p>
+	
+    <code>
+      <span class="small">&lt;head&gt;</span><br />
+  &lt;!--[if lte IE 6]&gt;<br />
+      &lt;style type=&quot;text/css&quot;&gt;<br />
+      img, .pngtrans { behavior:url(YOUR_FULL_ABSOLUTE_PATH/hm_iepngfix.htc) }<br />
+      &lt;/style&gt; <br />
+  &lt;![endif]--&gt;<br />
+      <span class="small">&lt;/head&gt;</span>
+    </code>
+    <p>If you have multiple domains use on the same site, then use the following code. </p>
+    <code>
+      <span class="small">&lt;head&gt;</span><br />
+      &lt;!--[if lte IE 6]&gt;<br />
+ &nbsp;&nbsp;&lt;script typle=&quot;text/javascript&quot;&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;document.write('&lt;style type=&quot;text/css&quot;&gt;img, .pngtrans { behavior: url(http://'+window.location.hostname+'/YOUR_RELATIVE_PATH_WITHOUT_HOSTNAME/hm_iepngfix.htc) }&lt;/style&gt;');<br />
+&nbsp;&nbsp;&lt;/script&gt;<br />
+&lt;![endif]--&gt;<br />
+      <span class="small">&lt;/head&gt;</span>    </code>
+<h2>Configuration</h2>
+	<p>In the file <span class="mono">hm_iepngfix.htc</span> you can set the file/CSS-Class suffix.. Default value is <span class="mono">_trans</span>.</p>
+  <ul>
+    <li>var imgSuffix = &quot;_trans&quot;; </li>
+  </ul>
+  <p>
+  	With this attitude the&nbsp;followings are taken   into at only pure pictures. 
+    The CSS background images are not dependently from this setting, sepearte only from upper CSS property (.pngtrans).
+  </p>
+  <ul>
+    <li>&lt;img src=&quot;myPicture<strong>_trans</strong>.png&quot; /&gt;</li>
+    <li>&lt;img src=&quot;myPicutre.png class=&quot;<strong>_trans</strong>&quot; /&gt; </li>
+    <li>&lt;div class=&quot;pngtrans&quot; style=&quot;background-image:url(myPicture.png)&quot;&gt;...&lt;/div&gt;</li>
+  </ul>
+
+	<h2>Examples (look in IE5 and IE6)</h2>
+	<h3> Without PNG-Fix (here have the picture in IE5/6 a grey background color and no transparency)</h3>
+	<p class="demo">
+  	<img src="pic.png" alt="png.png" width="135" height="113" class="float_left" title="png.png" />
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do  eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip  ex ea commodo consequat. 
+    Duis aute irure dolor in reprehenderit in  voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+  </p>
+
+	<h3> PNG-Fix with pure images - [*_trans.png] </h3>
+	<code>
+  	HTML:<br />
+		&lt;img src=&quot;pic_trans.png&quot; height=&quot;113&quot; width=&quot;135&quot; /&gt;
+  </code>
+	<p class="demo">
+  	<img src="pic_trans.png" alt="png_trans.png" width="135" height="113" class="float_left" title="png_trans.png" />
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do  eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip  ex ea commodo consequat. 
+    Duis aute irure dolor in reprehenderit in  voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  </p>
+
+	<h3> PNG-Fix as CSS background image [.pngtrans]</h3>
+  <code>HTML:<br />
+    &lt;p class=&quot;demo_css pngtrans&quot;&gt;....&lt;/p&gt;<br />
+    <br />
+    CSS:<br />
+    .demo_css {<br />
+    &nbsp;&nbsp;background:#fc0 url(pic.png) no-repeat top left;<br />
+    }<br />
+  </code>
+	<p class="demo_css pngtrans"> 
+  	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do  eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip  ex ea commodo consequat. 
+    Duis aute irure dolor in reprehenderit in  voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+  </p>
+  
+	<h3> PNG-FIX with CSS-Class for pure images [class=&quot;_trans&quot;]</h3>
+	<code>&lt;img src=&quot;pic.png&quot; class=&quot;_trans&quot; height=&quot;113&quot; width=&quot;135&quot; /&gt;</code>
+	<p class="demo">
+  	<img src="pic.png" alt="png.png" width="135" height="113" class="float_left _trans" title="png.png" />
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do  eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip  ex ea commodo consequat. 
+    Duis aute irure dolor in reprehenderit in  voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+  </p>
+
+	<h3>Restrictions</h3>
+<p style="background-color:#B3D9FF; border-top:3px solid #eee; border-bottom:3px solid #eee; padding:1em 0;">if you call in your Stylesheet directly with &quot;img {}&quot; then does this not longer works after rendering images. The &quot;img&quot; is replaced after Fix with &quot;span&quot;. But the PNG-Fix add a special CSS-Class.<br />
+  <strong>Solution:</strong><br />
+    <code style="width:95% !important;">CSS:<br />
+img, .pngImage {<br />
+&nbsp;&nbsp;...your properties<br />
+}</code>
+</p>
+<p style="background-color:#B3D9FF; border-top:3px solid #eee; border-bottom:3px solid #eee; padding:1em 0;">
+  	You can not use CSS background images with property <span class="mono">background-repeat</span> and <span class="mono">background-postition</span>. 
+  	These values are not taken over, because the background picture becomes a filter.
+  </p>
+  
+  <p>
+  	<a href="http://www.hieblmedia.de">http://www.hieblmedia.de</a><br />
+		<a href="http://www.joomla-template-yaml.de">http://www.joomla-template-yaml.de</a><br />
+  	<br />
+		Author and Copyright: 2007 &copy; Reinhard Hiebl
+  </p>
+</body>
+</html>

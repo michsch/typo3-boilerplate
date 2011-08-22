@@ -44,9 +44,9 @@
   /* (en) base layout gets standard font size 12px */
   /* (de) Basis-Layout erhält Standardschriftgröße von 12 Pixeln */
   body {
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:75.00%;
-    color:#444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: $font-size-body;
+    color: $c-text;
   }
 
   /*--- Headings | Überschriften ------------------------------------------------------------------------*/
@@ -58,12 +58,12 @@
     margin:0 0 0.25em 0;
   }
 
-  h1 { font-size:250%; }                       /* 30px */
-  h2 { font-size:200%; }                       /* 24px */
-  h3 { font-size:150%; }                       /* 18px */
-  h4 { font-size:133.33%; }                    /* 16px */
-  h5 { font-size:116.67%; }                    /* 14px */
-  h6 { font-size:116.67%; }                    /* 14px */
+  h1 { font-size: $font-size-h1; }
+  h2 { font-size: $font-size-h2; }
+  h3 { font-size: $font-size-h3; }
+  h4 { font-size: $font-size-h4; }
+  h5 { font-size: $font-size-h5; }
+  h6 { font-size: $font-size-h6; }
 
   /* --- Lists | Listen  -------------------------------------------------------------------------------- */
 
@@ -92,8 +92,8 @@
   strong,b { font-weight:bold; }
   em,i { font-style:italic; }
 
-  big { font-size:116.667%; }
-  small { font-size:91.667%; }
+  big { font-size: $font-size-big; }
+  small { font-size: $font-size-small; }
  
   pre { line-height:1.5em; margin:0 0 1em 0; }
   pre, code, kbd, tt, samp, var { font-size:100%; }
@@ -120,19 +120,20 @@
     border-bottom:1px #eee solid;
   }
 
-  /* Class for additional email dots */
+	/* Class for additional email dots */
 	.crypt { color: $c-crypt; font-size: 1px; }
 
   /*--- Links ----------------------------------------------------------------------------------------- */
 
-  a { color:#4D87C7; background:transparent; text-decoration:none; }
-  a:visited  { color:#036; }
-
-  /* (en) maximum constrast for tab focus - change with great care */
-  /* (en) Maximaler Kontrast für Tab Focus - Ändern Sie diese Regel mit Bedacht */
-  a:focus { text-decoration:underline; color:#000; background: #fff; outline: 3px #f93 solid; }
-  a:hover,
-  a:active { color:#182E7A; text-decoration:underline; outline: 0 none; }
+  a {
+		color: $c-text-link;
+		background:transparent;
+		text-decoration:none;
+		&:visited { color: $c-text-link-visited; }
+		&:focus { text-decoration:underline; color: $c-text-link-focus; background: #fff; outline: 3px #f93 solid; }
+		&:hover,
+	  &:active { color: $c-text-link-hover; text-decoration:underline; outline: 0 none; }
+	}
 
   /* --- images (with optional captions) | Bilder (mit optionaler Bildunterschrift) ------------------ */
 

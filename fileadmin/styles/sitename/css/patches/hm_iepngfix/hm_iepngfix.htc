@@ -1,0 +1,105 @@
+/**
+* "YAML for Joomla Template" - http://www.joomla-template-yaml.de
+*
+* @version    1.2 - $Id: iepngfix.htc 37 2007-07-12 01:32:28Z hieblmedia $ 
+* @package    yamljoomla
+* @copyright  Copyright (C) Reinhard Hiebl (www.hieblmedia.de)
+* @license    http://creativecommons.org/licenses/by/2.0/de/
+*
+*/
+
+<public:component>
+<public:attach event="onpropertychange" onevent="pngFix()" />
+
+<script type="text/javascript">
+
+/////////// Configuration ///////////////		
+	var imgSuffix   = "_trans"; /* Suffix */
+	
+	/* Examples: 
+	** 		Image Name 				= 'imageName_trans.png' 
+	**		or with CSS class = <img class="_trans" src="img.png" /> 
+	*/
+/////////////////////////////////////////
+
+	var filter = 'DXImageTransform.Microsoft.AlphaImageLoader';
+	var version = /MSIE (5\.5|6\.)/.test(navigator.userAgent) && (navigator.platform == "Win32" || navigator.platform == "Win64");
+	
+	if ( version && element.filters) 
+	{	
+		pngFix();
+	}
+	
+	function getFilter(imgSrc, method)
+	{
+		if (element.filters[filter])
+		{
+			element.filters[filter].enabled = imgSrc ? true : false;
+			if (imgSrc) with (element.filters[filter]) { src = imgSrc; sizingMethod = method }
+		}
+		else if (imgSrc)
+		{
+			element.style.filter = 'progid:'+filter+'(src="'+imgSrc+'",sizingMethod="'+method+'")';
+		}
+	}
+	
+	function pngFix()
+	{		
+		if ((event && !/(background|src)/.test(event.propertyName))) return;
+		 
+		var bgImg = element.currentStyle.backgroundImage || element.style.backgroundImage;
+		 
+		if (tagName == 'IMG')
+		{
+			var img = element;
+			var imgName = src.toUpperCase()
+			var imgClass = img.className.toUpperCase();
+					
+			if (imgName.substring(imgName.length-(imgSuffix.length+4), imgName.length) == imgSuffix.toUpperCase() + ".PNG" ||
+					imgClass.indexOf(imgSuffix.toUpperCase()) >= 0 )
+			{
+				var imgID = (img.id) ? 'id="' + img.id + '" ' : '';
+				var imgClass = (img.className) ? 'class="' + img.className + ' pngImage" ' : '';
+				var imgTitle = (img.title) ? 'title="' + img.title + '" ' : 'title="' + img.alt + '" ';
+				var imgStyle = 'display:inline-block;' + img.style.cssText;
+				
+				if (img.align == 'left') imgStyle = 'float:left;' + imgStyle;
+				if (img.align == 'right') imgStyle = 'float:right;' + imgStyle;
+				if (img.parentElement.href) imgStyle = 'cursor:hand;' + imgStyle;
+				
+				var strNewHTML = '<span ' + imgID + imgClass + imgTitle
+					+ ' style=" font-size:0; width:' + img.width + 'px; height:' + img.height + 'px;' + imgStyle + ';'
+					+ 'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader'
+					+ "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>";
+				
+				outerHTML = strNewHTML;
+			}
+		}
+		else if (bgImg && bgImg != 'none' && bgImg != 'inherit')
+		{
+			if (bgImg.match(/^url[("']+(.*\.png)[)"']+$/i))
+			{
+				var imgSrc = RegExp.$1;
+				
+				if (currentStyle.width == 'auto' && currentStyle.height == 'auto')
+				{
+					style.width = offsetWidth + 'px';
+				}
+				
+				style.backgroundImage = 'none';
+				getFilter(imgSrc, 'crop');
+				
+				for (var i = 0; i < childNodes.length; i++)
+				{
+					if (childNodes[i].style) childNodes[i].style.position = 'relative';
+				}				
+			}				
+			else 
+			{
+				getFilter();
+			}
+		}			 
+	}
+</script>
+
+</public:component>

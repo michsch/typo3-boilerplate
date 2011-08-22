@@ -32,8 +32,8 @@ config {
 	
 	### clean source
 	inlineStyle2TempFile = 1
-	removeDefaultJS = external
-	# removeDefaultJS = 0
+	# removeDefaultJS = external
+	removeDefaultJS = 0
 
 	### misc configurations
 	pageTitleFirst = 1
@@ -45,8 +45,8 @@ config {
 
 	### E-Mail Spam-Protect
 	spamProtectEmailAddresses = 1
-	spamProtectEmailAddresses_atSubst = <span style="font-size:1px; color: #ffffff;">.</span>@<span style="font-size:1px; color: #ffffff;">.</span>
-	spamProtectEmailAddresses_lastDotSubst = <span style="font-size:1px; color: #ffffff;">.</span>.<span style="font-size:1px; color: #ffffff;">.</span>
+	spamProtectEmailAddresses_atSubst = <span class="crypt">.</span>@<span class="crypt">.</span>
+	spamProtectEmailAddresses_lastDotSubst = <span class="crypt">.</span>.<span class="crypt">.</span>
 	
 	### filenames of images
 	meaningfulTempFilePrefix = 20
@@ -66,10 +66,12 @@ page {
 
 		10 = TEXT
 		10.value (
+			<!--[if IE]>
 			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+			<![endif]-->
 
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<meta name="apple-mobile-web-app-capable" content="yes" />
+    	<meta name="apple-mobile-web-app-capable" content="no" />
 		  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 			<link rel="shortcut icon" href="{$path.to.tpl}/images/favicon.ico">
@@ -84,8 +86,7 @@ page {
 			<link href="{$path.to.tpl}/css/patches/patch_ie.css" rel="stylesheet" type="text/css">
 			<![endif]-->
 			<!--[if lte IE 6]>
-			<!-- if you want to use a typoraphy based layout for IE6, than activate this.
-			<link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1b.css" media="screen, projection"> -->
+			<link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1b.css" media="screen, projection">
 			<script type="text/javascript">
 				document.write('<style type="text/css">img, .pngtrans { behavior: url(http://'+window.location.hostname+'{$path.to.tpl}/css/patches/hm_iepngfix/hm_iepngfix.htc) }</style>');
 			</script>
@@ -104,9 +105,13 @@ page {
 			<link rel="stylesheet" href="{$path.to.tpl}/css/screen/responsive.css?v=2">
 			<link rel="stylesheet" href="{$path.to.tpl}/css/print/print.css?v=2">
 			<!--<![endif]-->
-
-			<script type="text/javascript" src="{$path.to.tpl}/js/libs/live.js#css"></script>
 		)
+		# if you use SASS you can deactive this part, because SASS creates a single style.css file with all stylesheets in it
+		20 >
+		### only for development
+		21 = TEXT
+		21.value = <script type="text/javascript" src="{$path.to.tpl}/js/libs/live.js#css"></script>
+		# 21 >
 
 		### Google Sitemap, Yahoo & Bing verification
 		30 = TEXT
@@ -141,7 +146,7 @@ page {
 	}
 
 	includeCSS {
-		file1 = {$path.to.tpl}/css/my_layout.css
+		file1 = {$path.to.tpl}/css/style.css
 		file1.allWrap = <!--[if ! lte IE 6]><!-->|<!--<![endif]-->
 	}
 
@@ -152,19 +157,26 @@ page {
 
 	jsInline {
 		10 = TEXT
-		10.value = var language = "de";
+		10.value = var language = "{$config.language}";
 	}
 
 	### include jQuery at the bottom of the page
 	20 = TEXT
 	20.value (
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/{$version.jquery}/jquery.min.js"></script>
-		<script type="text/javascript">!window.jQuery && document.write('<script type="text/javascript" src="{$path.to.tpl}/js/lib/jquery-{$version.jquery}.min.js"><\/script>')</script>
+		<script type="text/javascript">!window.jQuery && document.write('<script type="text/javascript" src="{$path.to.tpl}/js/libs/jquery-{$version.jquery}.min.js"><\/script>')</script>
 	)
 
+	### only for development
+	30 = TEXT
+	30.value (
+		<script type="text/javascript" src="{$path.to.tpl}/js/mylibs/typo3.default.js"></script>
+	)
+	# 30 >
+
 	includeJSFooter {
-		file1 = {$path.to.tpl}/js/my_plugins.js
-		file2 = {$path.to.tpl}/js/my_layout.js
+		file1 = {$path.to.tpl}/js/plugins.js
+		file2 = {$path.to.tpl}/js/script.js
 	}
 
 	### every page gets their uid as css id 
@@ -272,6 +284,26 @@ lib.logo {
 	20.params = class="print"
 	20 >
 }
+
+#### activate RealURL ####
+config {
+  baseURL = 1
+  baseURL = http://{$baseURL}/
+  tx_realurl_enable = 1
+  prefixLocalAnchors = all
+  notification_email_urlmode = all
+}
+#### activate RealURL ####
+
+#Base-URL-Fix for IE6
+[browser = msie] && [version= <7]
+	config{ 
+		baseURL >
+		headerComment = -->  <base href="http://{$baseURL}/"></base> <!--
+		xhtml_cleaning = 0
+	}
+[global]
+#-->
 
 ### TYPO3 SEO - disable all the **** comments
 lib {

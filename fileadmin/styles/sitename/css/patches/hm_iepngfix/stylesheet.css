@@ -1,0 +1,50 @@
+@media all
+{
+	html * { font-size: 100.01% }
+	
+	body { color: #444; font-size: 81%; font-family: 'Trebuchet MS', Verdana, Helvetica, Arial, sans-serif; } /* 13px */
+	h1,h2,h3,h4 { font-weight:normal;}
+	
+	h1 {font-size: 1.6em; color: #666; margin: 0 0 0.25em 0; padding-top: 1.5em; }
+	h2 {font-size: 1.4em; color: #333; margin: 0 0 0.25em 0; padding-top: 1.5em; border-bottom: 2px #ddd solid; }
+	h3 {font-size: 1.3em; color: #5C6D75; margin: 0 0 0.25em 0; padding-top: 1.5em; border-bottom: 1px #eee solid; }
+	h4 {font-size: 1.2em; color: #888; margin: 0 0 0.30em 0; padding-top: 1em; font-weight:bold; border-bottom: 1px #ddd solid;}
+	h5 {font-size: 1.1em; color: #888; margin: 0 0 0.30em 0; font-style:italic; }
+	h6 {font-size: 1.0em; color: #888; margin: 0 0 0.30em 0; font-style:italic; }
+	
+	p { overflow:hidden; width:100%;}
+	
+	.float_left { float: left; margin-right: 1em; margin-bottom: 0.15em; border:0; }
+	
+	.mono, pre, code, samp {
+		font-family: "Courier New", Courier, monospace;
+		font-style: normal;
+	}
+	pre, code, samp {
+		display:block;
+		margin: 0 0 1em 1em;
+		padding: 0.5em;
+		color: #444; 
+		background: #f8f8f8;
+		border-top: 2px #ddd solid;
+		border-bottom: 2px #ddd solid;
+	}
+	.mono { 
+		padding:0 0.3em 0 0.3em;
+		background:#f8f8f8;
+		border: 1px #ddd solid;
+	}
+	.demo {
+		background:#fc0;
+	}
+	.demo_css {
+		background:#fc0 url(pic.png) no-repeat top left;
+		height:100px;
+		padding:10px 0;
+	}
+	
+	.small {
+		font-size: smaller;
+		font-style: italic;
+	}
+}

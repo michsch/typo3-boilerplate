@@ -140,6 +140,14 @@ RewriteRule .* index.php [L]
 
 AddType text/x-component .htc
 
+# BEGIN Compress text files
+<IfModule mod_deflate.c>
+  <FilesMatch "\.(x?html?|php)$">
+    SetOutputFilter DEFLATE
+  </FilesMatch>
+</IfModule>
+# END Compress text files
+
 # Expires Header + Removal of ETag
 <FilesMatch "\.(ico|png|gif|js|css|jpg|jpeg|swf)">
 	<IfModule mod_expires.c>
@@ -154,6 +162,36 @@ AddType text/x-component .htc
 		Header unset Last-Modified
 	</IfModule>
 </FilesMatch>
+
+# BEGIN Cache-Control Headers
+<IfModule mod_headers.c>
+  <FilesMatch "\\.(ico|jpe?g|png|gif|swf)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+  <FilesMatch "\\.(css)$">
+    Header set Cache-Control "max-age=604800, public"
+  </FilesMatch>
+  <FilesMatch "\\.(js)$">
+    Header set Cache-Control "max-age=216000, private"
+  </FilesMatch>
+  <FilesMatch "\\.(x?html?|php)$">
+    Header set Cache-Control "max-age=600, private, must-revalidate"
+  </FilesMatch>
+</IfModule>
+# END Cache-Control Headers
+
+# BEGIN Turn ETags Off
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+FileETag None
+# END Turn ETags Off
+
+# BEGIN Remove Last-Modified Header
+<IfModule mod_headers.c>
+  Header unset Last-Modified
+</IfModule>
+# END Remove Last-Modified Header
 
 # Compressed Content
 <FilesMatch "\.gz\.(js|css)">
