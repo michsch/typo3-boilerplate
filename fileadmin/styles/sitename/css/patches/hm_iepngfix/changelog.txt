@@ -1,7 +1,0 @@
-[V1.2]
-The Image Replacement <span> a CSS class .pngImage added to the picture setup on CSS
-Respond to it, because img in these pictures are no longer available.
-
-[V1.1]
-Internal audit expands on win32 and win64
-Added font-size:0 in span for scaling problems.
